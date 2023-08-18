@@ -8,16 +8,18 @@ namespace LabNetPractica1.Modelo
 {
     internal abstract class Transporte
     {
-        public int pasajero { get; set; }
+        public int Pasajero { get; set; }
+        public int velocidad;
 
         public Transporte(int _pasajero)
         {
-            this.pasajero = _pasajero;  
+            this.Pasajero = _pasajero;
+            velocidad = 0;
         }
 
-        public abstract string Avanzar();
+        public abstract void Acelerar();
 
-        public abstract string Detenerse();
+        public abstract void Frenar();
 
     }
 }

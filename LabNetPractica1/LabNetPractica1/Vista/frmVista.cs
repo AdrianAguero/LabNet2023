@@ -22,6 +22,7 @@ namespace LabNetPractica1.Vista
             InitializeComponent();
         }
 
+        #region botones
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
@@ -48,6 +49,39 @@ namespace LabNetPractica1.Vista
             }
         }
 
+        private void btnAcelerar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridView.SelectedCells[0].RowIndex;
+                Transporte transporte = listaTransportes[rowIndex];
+
+                transporte.Acelerar();
+                lblVelocidad.Text = $"Se ha acelerado el {transporte.GetType().Name}. \nNueva velocidad: {transporte.velocidad}";
+            }
+        }
+
+        private void btnFrenar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.SelectedCells.Count > 0)
+            {
+                int rowIndex = dataGridView.SelectedCells[0].RowIndex;
+                Transporte transporte = listaTransportes[rowIndex];
+
+                transporte.Frenar();
+                lblVelocidad.Text = $"Se ha frenado el {transporte.GetType().Name}. \nNueva velocidad: {transporte.velocidad}";
+            }
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dataGridView.Rows[e.RowIndex].Selected = true;
+            }
+        }
+        #endregion
+
         #region metodos
         private void LimpiarCampos()
         {
@@ -58,11 +92,16 @@ namespace LabNetPractica1.Vista
         {
             dataGridView.Rows.Clear();
 
-            foreach (var transporte in listaTransportes)
+            foreach (Transporte transporte in listaTransportes)
             {
-                dataGridView.Rows.Add(transporte.GetType().Name, transporte.pasajero);
+                string tipoTransporte = transporte.GetType().Name;
+                int cantidadPasajeros = transporte.Pasajero;
+                
+
+                dataGridView.Rows.Add(tipoTransporte, cantidadPasajeros);
             }
         }
+
         #endregion
 
         #region validaciones 
@@ -82,11 +121,12 @@ namespace LabNetPractica1.Vista
                 lblMensaje.Text = "La cantidad de pasajeros debe \nser un número mayor a 0.";
                 return false;
             }
+
             int maxPasajeros = (tipo == "Omnibus") ? 50 : 4;
 
             if (cantidad > maxPasajeros)
             {
-                lblMensaje.Text = $"La cantidad máxima de pasajeros para \n{tipo} es {maxPasajeros}.";
+                lblMensaje.Text = $"La cantidad máxima de pasajeros para\nun {tipo} es {maxPasajeros}.";
                 return false;
             }
 
@@ -99,7 +139,8 @@ namespace LabNetPractica1.Vista
             lblMensaje.Text = ""; 
             return true;
         }
-        #endregion
 
+        #endregion
+       
     }
 }

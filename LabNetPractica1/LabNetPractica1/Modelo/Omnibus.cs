@@ -12,14 +12,16 @@ namespace LabNetPractica1.Modelo
         {
         }
 
-        public override string Avanzar()
+        public override void Acelerar()
         {
-            throw new NotImplementedException();
+            if (velocidad < 50)
+                velocidad += 10;
         }
 
-        public override string Detenerse()
+        public override void Frenar()
         {
-            throw new NotImplementedException();
+            if (velocidad > 0)
+                velocidad -= 5;
         }
     }
 }
