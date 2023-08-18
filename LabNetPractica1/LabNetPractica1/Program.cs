@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabNetPractica1.Vista;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace LabNetPractica1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmVista());
         }
     }
 }
