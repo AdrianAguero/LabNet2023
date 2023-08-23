@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ManejoExepciones.Vista
@@ -33,7 +26,7 @@ namespace ManejoExepciones.Vista
 
             catch (Exception)
             {
-                MessageBox.Show("Porfavor ingresar un numero");
+                MessageBox.Show("PORFAVOR INGRESAR UN NUMERO!");
             }
 
             finally { MessageBox.Show("Operacion finalizada"); }
@@ -43,17 +36,20 @@ namespace ManejoExepciones.Vista
         {
             try
             {
-                decimal resultadoDeDivision = Logic.Dividir(Convert.ToInt32(txtDividendo.Text), Convert.ToInt32(txtDivisor.Text));
+                decimal resultadoDeDivision = Logic.Dividir(Convert.ToDecimal(txtDividendo.Text), Convert.ToDecimal(txtDivisor.Text));
                 MessageBox.Show(resultadoDeDivision.ToString());
             }
             catch (DivideByZeroException ex)
             {
-                MessageBox.Show($"Solo chuck Norris divide por 0! ({ex.Message})");
+                
+                imgChuck.Visible = true;
+                imgChuck.BringToFront();
+                MessageBox.Show($"error ({ex.Message})");
             }
 
             catch (Exception)
             {
-                MessageBox.Show("Seguro ingreso una letra o no ingreso nada!");
+                MessageBox.Show("PORFAVOR INGRESAR UN NUMERO!");
             }
         }
 

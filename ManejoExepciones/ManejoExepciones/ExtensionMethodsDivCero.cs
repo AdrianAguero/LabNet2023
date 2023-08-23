@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManejoExepciones
 {
-    internal static class ExtensionMethodsDivCero
+    public static class ExtensionMethodsDivCero
     {   //Ejercicio 1:
         public static int DividirPorCero(this int value)
         {

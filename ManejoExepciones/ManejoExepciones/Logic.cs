@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ManejoExepciones
 {
-    internal class Logic
+    public class Logic
     {
         //Ejercicio 2:
-        public static decimal Dividir(int dividendo, int divisor)
+        public static decimal Dividir(decimal dividendo, decimal divisor)
         {
             decimal resultado = dividendo / divisor;
             return resultado;

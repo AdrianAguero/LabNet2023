@@ -45,10 +45,12 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnExepcionPersonalizada = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.imgChuck = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgChuck)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -216,11 +218,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Ejecutar Exepcion Personalizada";
             // 
+            // imgChuck
+            // 
+            this.imgChuck.Image = global::ManejoExepciones.Properties.Resources.chuck_norris_PNG9;
+            this.imgChuck.Location = new System.Drawing.Point(508, 26);
+            this.imgChuck.Name = "imgChuck";
+            this.imgChuck.Size = new System.Drawing.Size(324, 357);
+            this.imgChuck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgChuck.TabIndex = 3;
+            this.imgChuck.TabStop = false;
+            this.imgChuck.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 395);
+            this.ClientSize = new System.Drawing.Size(862, 399);
+            this.Controls.Add(this.imgChuck);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -235,6 +249,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgChuck)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +273,6 @@
         private System.Windows.Forms.Button btnDividir;
         private System.Windows.Forms.Button btnExepcion;
         private System.Windows.Forms.Button btnExepcionPersonalizada;
+        private System.Windows.Forms.PictureBox imgChuck;
     }
 }

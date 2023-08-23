@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManejoExepciones.MisExepciones
 {
-    internal class ExepcionDivCero
+    public class ExepcionDivCero
     {
         public static void DispararMiExcepcion()
         {
