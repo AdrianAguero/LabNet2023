@@ -1,0 +1,104 @@
+﻿using Linq.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Linq.Data
+{
+    public class DaoProduct : DaoBase<Products>
+    {
+
+        public DaoProduct(NorthwindContext context)
+        {
+            _context = context;
+        }
+
+        public DaoProduct()
+        {
+        }
+
+        NorthwindContext db = new NorthwindContext();
+
+        public IQueryable<Products> GetProductsWhitoutStockMethod()
+        {
+
+            IQueryable<Products> queryProducts = db.Products.Select(p => p).Where(p => p.UnitsInStock == 0);
+            return queryProducts;
+        }
+
+        public IQueryable<Products> GetProductsWhitoutStockSintax()
+        {
+
+            IQueryable<Products> queryProducts = from prod in db.Products
+                                                 where prod.UnitsInStock == 0
+                                                 select prod;
+            return queryProducts;
+        }
+
+        public List<Products> GetAll()
+        {
+            List<Products> lstProducts = db.Products.Select(p => p).ToList();
+            return lstProducts;
+        }
+
+        public IQueryable<Products> GetProductsWhitStockUnitPriceGreaterThan3Sintax()
+        {
+
+            IQueryable<Products> queryProducts = from prod in db.Products
+                                                 where prod.UnitsInStock != 0
+                                                 && prod.UnitPrice > 3
+                                                 select prod;
+            return queryProducts;
+        }
+        public IQueryable<Products> GetProductsWhitStockUnitPriceGreaterThan3Method()
+        {
+
+            IQueryable<Products> queryProducts = db.Products.Select(p => p).Where(p => p.UnitsInStock != 0).Where(p => p.UnitPrice > 3);
+            return queryProducts;
+        }
+
+        public Products GetFirstOrNull(int id)
+        {
+            Products prod = db.Products.Select(p => p).Where(p => p.ProductID == id).FirstOrDefault();
+            return prod;
+        }
+
+        public Products GetFirst(List<Products> lst)
+        {
+            Products prod = lst.First();
+            return prod;
+        }
+
+        public List<Products> GetOrderProductsList()
+        {
+
+            List<Products> queryProducts = db.Products.Select(p => p).OrderBy(p => p.ProductName).ToList();
+            return queryProducts;
+        }
+
+        public List<Products> GetOrderProductsListByStock()
+        {
+
+            List<Products> queryProducts = (from product in db.Products
+                                            orderby product.UnitsInStock descending
+                                            select product).ToList();
+            return queryProducts;
+        }
+        public List<ProductsDataTrans> GetCategories()
+        {
+            return (from Products in _context.Products
+                    join Categories in _context.Categories
+                    on Products.CategoryID equals Categories.CategoryID
+                    select new ProductsDataTrans
+                    {
+                        id = Products.ProductID,
+                        producto = Products.ProductName,
+                        categoria = Categories.CategoryName
+                    }).ToList();
+
+
+        }
+    }
+}
