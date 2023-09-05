@@ -1,8 +1,8 @@
 ﻿using Linq.Data;
 using Linq.Entities;
 using Linq.Logic.Interface;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Linq.Logic.Logic
 {
