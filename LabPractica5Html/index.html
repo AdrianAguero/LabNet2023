@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Adivina el Número</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div id="game">
+            
+            <h3>ADIVINA EL NÚMERO</h3>
+            <div class="input-wrapper">
+                <input type="text" onkeypress="return validaNumericos(event)" id="numIngresado" maxlength="2" placeholder="1-10">
+                <button id="btnEnviar">Enviar</button>
+            </div>
+            <div id="resultado" class="resultado"></div>
+            <div class="scores" id="scores">
+                <p>SCORE</p>
+                <p id="score">100</p>
+                <p>HIGHSCORE</p>
+                <p id="highScore">0</p>
+            </div>
+            
+            <button id="btnReiniciar">&#8634</button>
+        </div>
+    </div> 
+    <canvas id="confetti"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js">
+    </script>
+    
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
